@@ -56,6 +56,6 @@ public class Item {
     }
     @Override
     public String toString() {
-        return String.format("Student [id=%s, retroId=%s, sectionId=%s, title=%s, notes=%s]", id, retroId, sectionId, title, notes);
+        return String.format("Item [id=%s, retroId=%s, sectionId=%s, title=%s, notes=%s]", id, retroId, sectionId, title, notes);
     }
 }

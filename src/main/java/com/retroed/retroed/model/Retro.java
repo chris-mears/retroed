@@ -38,6 +38,6 @@ public class Retro {
     }
     @Override
     public String toString() {
-        return String.format("Student [id=%s, name=%s, body=%s]", id, name, body);
+        return String.format("Retro [id=%s, name=%s, body=%s]", id, name, body);
     }
 }

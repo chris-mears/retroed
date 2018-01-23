@@ -47,7 +47,7 @@ public class Section {
     }
     @Override
     public String toString() {
-        return String.format("Student [id=%s, retroId=%s, title=%s, notes=%s]", id, retroId, title, notes);
+        return String.format("Section [id=%s, retroId=%s, title=%s, notes=%s]", id, retroId, title, notes);
     }
 }
 
