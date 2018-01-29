@@ -49,4 +49,11 @@ public class RetroRepositoryImpl implements RetroRepository {
 		Number id = keyHolder.getKey();
         return getRetro(id.intValue());
     }
+
+    @Override
+    public Retro updateRetro(Retro retro) {
+        jdbcTemplate.update("UPDATE retros set name = ?, body = ? WHERE retro_id = ?", retro.getName(), retro.getbody(), retro.getId());
+
+        return retro;
+    }
 }

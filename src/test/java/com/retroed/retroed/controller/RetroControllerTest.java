@@ -49,4 +49,18 @@ public class RetroControllerTest {
         Retro responseRetro = restTemplate.postForObject("http://localhost:8080/retros", retro, Retro.class);
         System.out.println(responseRetro.getId());
     }
+
+    @Test
+    public void testUpdateRetro() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        Retro retro = restTemplate.getForObject("http://localhost:8080/retros/15", Retro.class);
+
+        String updateBody = retro.getbody() + "!";
+
+        retro.setbody(updateBody);
+        restTemplate.put("http://localhost:8080/retros", retro);
+        System.out.println(retro.getName() + "," + retro.getbody());
+
+    }
 }

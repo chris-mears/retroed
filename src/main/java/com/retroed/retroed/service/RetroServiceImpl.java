@@ -26,4 +26,9 @@ public class RetroServiceImpl implements RetroService {
     public Retro createRetro(Retro retro) {
         return retroRepository.createRetro(retro);
     }
+
+    @Override
+    public Retro updateRetro(Retro retro) {
+        return retroRepository.updateRetro(retro);
+    }
 }

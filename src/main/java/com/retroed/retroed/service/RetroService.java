@@ -11,4 +11,6 @@ public interface RetroService {
     Retro getRetro(Integer id);
 
     Retro createRetro(Retro retro);
+
+    Retro updateRetro(Retro retro);
 }
