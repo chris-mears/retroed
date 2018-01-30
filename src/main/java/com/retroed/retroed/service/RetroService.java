@@ -13,4 +13,6 @@ public interface RetroService {
     Retro createRetro(Retro retro);
 
     Retro updateRetro(Retro retro);
+
+    void deleteRetro(Integer id);
 }

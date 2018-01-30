@@ -25,4 +25,10 @@ public class RetroController {
 
     @RequestMapping(value = "/retros", method = RequestMethod.PUT)
     public @ResponseBody Retro updateRetro(@RequestBody Retro retro) { return retroService.updateRetro(retro); }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody Object delete(@PathVariable(value="id") Integer id) {
+        retroService.deleteRetro(id);
+        return null;
+    }
 }

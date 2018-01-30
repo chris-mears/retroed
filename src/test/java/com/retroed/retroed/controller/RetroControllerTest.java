@@ -63,4 +63,17 @@ public class RetroControllerTest {
         System.out.println(retro.getName() + "," + retro.getbody());
 
     }
+
+    @Test
+    public void testDelete() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        Retro retro = new Retro();
+        retro.setName("Test Retro for Delete");
+        retro.setbody("This retro is being created so it can be deleted");
+
+        retro = restTemplate.postForObject("http://localhost:8080/retros", retro, Retro.class);
+        System.out.println(retro.getId());
+        restTemplate.delete("http://localhost:8080/delete/" + retro.getId());
+    }
 }
