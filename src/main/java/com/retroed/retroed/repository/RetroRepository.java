@@ -15,4 +15,6 @@ public interface RetroRepository {
     Retro updateRetro(Retro retro);
 
     void deleteRetro(Integer id);
+
+    List<Retro> getRetroByOption(String value);
 }

@@ -20,6 +20,10 @@ public class RetroController {
     @RequestMapping(value = "/retros/{id}", method = RequestMethod.GET)
     public @ResponseBody Retro getRetro(@PathVariable(value="id") Integer id) {return retroService.getRetro(id);}
 
+    @RequestMapping(value = "/retro", method = RequestMethod.GET)
+    public @ResponseBody List<Retro> getRetroByOption(@RequestParam(value = "name") String value)
+    { return retroService.getRetroByOption(value);}
+
     @RequestMapping(value = "/retros", method = RequestMethod.POST)
     public @ResponseBody Retro createRetro(@RequestBody Retro retro) { return retroService.createRetro(retro);}
 

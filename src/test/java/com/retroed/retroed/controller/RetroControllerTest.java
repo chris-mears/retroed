@@ -30,6 +30,14 @@ public class RetroControllerTest {
     }
 
     @Test
+    public void testGetRetroByOption() {
+        RestTemplate restTemplate = new RestTemplate();
+        Retro retro = restTemplate.getForObject("http://localhost:8080/retro/?column=name&value=Section Test Retro", Retro.class);
+
+        System.out.println(retro);
+    }
+
+    @Test
     public void testGetRetro() {
         RestTemplate restTemplate = new RestTemplate();
         Retro retro = restTemplate.getForObject("http://localhost:8080/retros/15", Retro.class);

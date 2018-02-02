@@ -5,7 +5,6 @@ import com.retroed.retroed.util.RetroRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -13,9 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Repository("retroRepository")
 public class RetroRepositoryImpl implements RetroRepository {
@@ -63,5 +60,11 @@ public class RetroRepositoryImpl implements RetroRepository {
     @Override
     public void deleteRetro(Integer id) {
         jdbcTemplate.update("DELETE FROM retros WHERE retro_id = ?", id);
+    }
+
+    @Override
+    public List<Retro> getRetroByOption(String value) {
+        List<Retro> retros = jdbcTemplate.query("SELECT * FROM retros WHERE name ILIKE ?", new RetroRowMapper(), "%" + value + "%");
+        return retros;
     }
 }

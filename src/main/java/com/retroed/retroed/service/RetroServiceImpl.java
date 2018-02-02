@@ -36,4 +36,9 @@ public class RetroServiceImpl implements RetroService {
     public void deleteRetro(Integer id) {
         retroRepository.deleteRetro(id);
     }
+
+    @Override
+    public List<Retro> getRetroByOption(String value) {
+        return retroRepository.getRetroByOption(value);
+    }
 }
