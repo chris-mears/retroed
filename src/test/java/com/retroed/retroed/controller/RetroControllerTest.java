@@ -40,9 +40,9 @@ public class RetroControllerTest {
     @Test
     public void testGetRetro() {
         RestTemplate restTemplate = new RestTemplate();
-        Retro retro = restTemplate.getForObject("http://localhost:8080/retros/15", Retro.class);
+        Retro retro = restTemplate.getForObject("http://localhost:8080/retros/25", Retro.class);
 
-        assertEquals("Test Retro 1", retro.getName());
+        assertEquals("Section Test Retro", retro.getName());
         System.out.println(retro.toString());
     }
 

@@ -27,7 +27,7 @@ public class Section {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getRetorId() {
+    public Long getRetroId() {
         return retroId;
     }
     public void setRetroId(Long retroId) {
