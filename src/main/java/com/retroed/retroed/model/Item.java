@@ -1,28 +1,33 @@
 package com.retroed.retroed.model;
 
+import java.util.Date;
+
 public class Item {
     private Long id;
     private Long retroId;
     private Long sectionId;
     private String title;
-    private String notes;
+    private String body;
+    private Date dueDate;
     public Item() {
         super();
     }
-    public Item(Long id, Long retroId, Long sectionId, String title, String notes) {
+    public Item(Long id, Long retroId, Long sectionId, String title, String body, Date dueDate) {
         super();
         this.id = id;
         this.retroId = retroId;
         this.sectionId = sectionId;
         this.title = title;
-        this.notes = notes;
+        this.body = body;
+        this.dueDate = dueDate;
     }
-    public Item(Long retroId, Long sectionId, String title, String notes) {
+    public Item(Long retroId, Long sectionId, String title, String body, Date dueDate) {
         super();
         this.retroId = retroId;
         this.sectionId = sectionId;
         this.title = title;
-        this.notes = notes;
+        this.body = body;
+        this.dueDate = dueDate;
     }
     public Long getId() {
         return id;
@@ -36,7 +41,7 @@ public class Item {
     public void setRetroId(Long retroId) {
         this.retroId = retroId;
     }
-    public Long getSectionIdId() {
+    public Long getSectionId() {
         return sectionId;
     }
     public void setSectionId(Long sectionId) {
@@ -48,14 +53,17 @@ public class Item {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getNotes() {
-        return notes;
+    public String getBody() {
+        return body;
     }
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setBody(String notes) {
+        this.body = body;
     }
+    public Date getDueDate() { return dueDate; }
+    public void setDueDate(Date dueDate) { this.dueDate = dueDate; }
+
     @Override
     public String toString() {
-        return String.format("Item [id=%s, retroId=%s, sectionId=%s, title=%s, notes=%s]", id, retroId, sectionId, title, notes);
+        return String.format("Item [id=%s, retroId=%s, sectionId=%s, title=%s, body=%s, dueDate=%s]", id, retroId, sectionId, title, body, dueDate);
     }
 }

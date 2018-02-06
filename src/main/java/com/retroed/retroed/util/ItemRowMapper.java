@@ -1,4 +1,23 @@
 package com.retroed.retroed.util;
 
-public class ItemRowMapper {
+import com.retroed.retroed.model.Item;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class ItemRowMapper implements RowMapper<Item> {
+
+    @Override
+    public Item mapRow(ResultSet resultSet, int i) throws SQLException {
+        Item item = new Item();
+        item.setId(resultSet.getLong("item_id"));
+        item.setRetroId(resultSet.getLong("retro_id"));
+        item.setSectionId(resultSet.getLong("section_id"));
+        item.setTitle(resultSet.getString("title"));
+        item.setBody(resultSet.getString("body"));
+        item.setDueDate(resultSet.getDate("due_date"));
+
+        return item;
+    }
 }
