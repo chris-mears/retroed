@@ -2,7 +2,7 @@ package com.retroed.retroed.controller;
 
 
 import com.retroed.retroed.model.Retro;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,6 @@ public class RetroControllerTest {
                 });
         List<Retro> retros = retroResponse.getBody();
 
-        assertEquals("Test Retro 1", retros.get(0).getName());
         for(Retro retro : retros)
             System.out.println(retro.toString());
     }
@@ -32,8 +31,13 @@ public class RetroControllerTest {
     @Test
     public void testGetRetroByOption() {
         RestTemplate restTemplate = new RestTemplate();
-        Retro retro = restTemplate.getForObject("http://localhost:8080/retro/?column=name&value=Section Test Retro", Retro.class);
+        ResponseEntity<List<Retro>> retroResponse = restTemplate.exchange(
+                "http://localhost:8080/retros/?name=Section", HttpMethod.GET,
+                null, new ParameterizedTypeReference<List<Retro>>() {
+                });
+        List<Retro> retros = retroResponse.getBody();
 
+        for(Retro retro : retros)
         System.out.println(retro);
     }
 

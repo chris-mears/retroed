@@ -29,7 +29,7 @@ public class RetroRepositoryImpl implements RetroRepository {
 
     @Override
     public Retro getRetro(Integer id) {
-        Retro retro = jdbcTemplate.queryForObject("SELECT * FROM retros WHERE retro_id = ?", Retro.class, id);
+        Retro retro = jdbcTemplate.queryForObject("SELECT * FROM retros WHERE retro_id = ?", new RetroRowMapper(), id);
         return retro;
     }
 

@@ -34,7 +34,6 @@ public class ItemControllerTest {
                 });
         List<Item> items = itemsResponse.getBody();
 
-        assertEquals("Task for Testing", items.get(0).getTitle());
         for(Item item : items)
             System.out.println(item.toString());
     }

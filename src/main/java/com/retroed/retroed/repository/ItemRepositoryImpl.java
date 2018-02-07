@@ -63,7 +63,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public Item updateItem(Item item) {
         jdbcTemplate.update("UPDATE items set section_id = ?, retro_id = ?, title = ?, body = ?, item_type = ?, due_date = ? WHERE item_id = ?",
-                item.getSectionId(), item.getRetroId(), item.getTitle(), item.getBody(), item.getType(), item.getId());
+                item.getSectionId(), item.getRetroId(), item.getTitle(), item.getBody(), item.getType(), item.getDueDate(), item.getId());
 
         return item;
     }
