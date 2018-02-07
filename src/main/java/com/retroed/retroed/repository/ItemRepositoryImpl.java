@@ -38,17 +38,19 @@ public class ItemRepositoryImpl implements ItemRepository {
         insert.setGeneratedKeyName("item_id");
 
         Map<String, Object> data = new HashMap<>();
-        data.put("section_id", item.getSectionId());
         data.put("retro_id", item.getRetroId());
+        data.put("section_id", item.getSectionId());
         data.put("title", item.getTitle());
         data.put("body", item.getBody());
+        data.put("item_type", item.getType());
         data.put("due_date", item.getDueDate());
 
         List<String> columns = new ArrayList<>();
-        columns.add("section_id");
         columns.add("retro_id");
+        columns.add("section_id");
         columns.add("title");
         columns.add("body");
+        columns.add("item_type");
         columns.add("due_date");
 
         insert.setTableName("items");
@@ -60,8 +62,8 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public Item updateItem(Item item) {
-        jdbcTemplate.update("UPDATE items set section_id = ?, retro_id = ?, title = ?, body = ?, due_date = ? WHERE item_id = ?",
-                item.getSectionId(), item.getRetroId(), item.getTitle(), item.getBody(), item.getId());
+        jdbcTemplate.update("UPDATE items set section_id = ?, retro_id = ?, title = ?, body = ?, item_type = ?, due_date = ? WHERE item_id = ?",
+                item.getSectionId(), item.getRetroId(), item.getTitle(), item.getBody(), item.getType(), item.getId());
 
         return item;
     }

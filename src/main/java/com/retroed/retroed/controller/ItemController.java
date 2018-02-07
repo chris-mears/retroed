@@ -27,7 +27,7 @@ public class ItemController {
     @RequestMapping(value = "/items", method = RequestMethod.POST)
     public @ResponseBody Item createItem(@RequestBody Item item) { return itemService.createItem(item);}
 
-    @RequestMapping(value = "/sections", method = RequestMethod.PUT)
+    @RequestMapping(value = "/items", method = RequestMethod.PUT)
     public @ResponseBody Item updateSection(@RequestBody Item item) { return itemService.updateItem(item); }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

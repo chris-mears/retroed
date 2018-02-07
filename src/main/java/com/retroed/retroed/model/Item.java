@@ -8,25 +8,28 @@ public class Item {
     private Long sectionId;
     private String title;
     private String body;
+    private String type;
     private Date dueDate;
     public Item() {
         super();
     }
-    public Item(Long id, Long retroId, Long sectionId, String title, String body, Date dueDate) {
+    public Item(Long id, Long retroId, Long sectionId, String title, String body, String type, Date dueDate) {
         super();
         this.id = id;
         this.retroId = retroId;
         this.sectionId = sectionId;
         this.title = title;
         this.body = body;
+        this.type = type;
         this.dueDate = dueDate;
     }
-    public Item(Long retroId, Long sectionId, String title, String body, Date dueDate) {
+    public Item(Long retroId, Long sectionId, String title, String body, String type, Date dueDate) {
         super();
         this.retroId = retroId;
         this.sectionId = sectionId;
         this.title = title;
         this.body = body;
+        this.type = type;
         this.dueDate = dueDate;
     }
     public Long getId() {
@@ -56,14 +59,16 @@ public class Item {
     public String getBody() {
         return body;
     }
-    public void setBody(String notes) {
+    public void setBody(String body) {
         this.body = body;
     }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
     public Date getDueDate() { return dueDate; }
     public void setDueDate(Date dueDate) { this.dueDate = dueDate; }
 
     @Override
     public String toString() {
-        return String.format("Item [id=%s, retroId=%s, sectionId=%s, title=%s, body=%s, dueDate=%s]", id, retroId, sectionId, title, body, dueDate);
+        return String.format("Item [id=%s, retroId=%s, sectionId=%s, title=%s, body=%s, type=%s dueDate=%s]", id, retroId, sectionId, title, body, type, dueDate);
     }
 }

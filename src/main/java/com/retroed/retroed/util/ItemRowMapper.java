@@ -16,6 +16,7 @@ public class ItemRowMapper implements RowMapper<Item> {
         item.setSectionId(resultSet.getLong("section_id"));
         item.setTitle(resultSet.getString("title"));
         item.setBody(resultSet.getString("body"));
+        item.setType(resultSet.getString("item_type"));
         item.setDueDate(resultSet.getDate("due_date"));
 
         return item;

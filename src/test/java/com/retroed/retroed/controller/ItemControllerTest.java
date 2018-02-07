@@ -21,12 +21,7 @@ public class ItemControllerTest {
     public void getSection() {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<List<Section>> sectionResponse = restTemplate.exchange(
-                "http://localhost:8080/retros/?name=Section", HttpMethod.GET,
-                null, new ParameterizedTypeReference<List<Section>>() {
-                });
-        List<Section> sections = sectionResponse.getBody();
-        section = sections.get(3);
+        section = restTemplate.getForObject("http://localhost:8080/retros/25/sections/29", Section.class);
     }
 
     @Test
@@ -39,7 +34,7 @@ public class ItemControllerTest {
                 });
         List<Item> items = itemsResponse.getBody();
 
-        assertEquals("Test Section 1", items.get(0).getTitle());
+        assertEquals("Task for Testing", items.get(0).getTitle());
         for(Item item : items)
             System.out.println(item.toString());
     }
@@ -47,24 +42,25 @@ public class ItemControllerTest {
     @Test
     public void testGetItem() {
         RestTemplate restTemplate = new RestTemplate();
-        Item item = restTemplate.getForObject("http://localhost:8080/sections/" + section.getId() + "/items/?", Item.class);
+        Item item = restTemplate.getForObject("http://localhost:8080/sections/" + section.getId() + "/items/20", Item.class);
 
-        assertEquals("Test Section for getSection", item.getTitle());
+        assertEquals("Task for Testing", item.getTitle());
         System.out.println(item.toString());
     }
 
     @Test
     public void testCreateItem() {
         RestTemplate restTemplate = new RestTemplate();
-        Date date = new Date(2018, 2, 28);
+        Date date = new Date(118, 1, 28);
 
 
 
         Item item = new Item();
-        item.setTitle("Test Section 4");
-        item.setBody("Test notes for section");
+        item.setTitle("Test Item 1");
+        item.setBody("Test item for items");
         item.setRetroId(section.getRetroId());
         item.setSectionId(section.getId());
+        item.setType("task");
         item.setDueDate(date);
 
 
@@ -76,7 +72,7 @@ public class ItemControllerTest {
     public void testUpdateItem() {
         RestTemplate restTemplate = new RestTemplate();
 
-        Item item = restTemplate.getForObject("http://localhost:8080/sections/" + section.getId() + "/items/?", Item.class);
+        Item item = restTemplate.getForObject("http://localhost:8080/sections/" + section.getId() + "/items/20", Item.class);
 
         String updateBody = item.getBody() + " Updated!";
 
@@ -95,6 +91,7 @@ public class ItemControllerTest {
         item.setRetroId(section.getRetroId());
         item.setTitle("Test Item for Delete");
         item.setBody("This Item is being created so it can be deleted");
+        item.setType("note");
         item.setDueDate(date);
 
         item = restTemplate.postForObject("http://localhost:8080/sections/items", item, Item.class);
